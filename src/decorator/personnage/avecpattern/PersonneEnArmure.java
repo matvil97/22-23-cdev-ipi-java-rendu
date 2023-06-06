@@ -1,10 +1,10 @@
 package decorator.personnage.avecpattern;
 
-public class Armure extends PersonnageDecorator {
+public class PersonneEnArmure extends PersonnageDecorator {
 
     private int protection;
 
-    public Armure(Personnage personnage, int protection) {
+    public PersonneEnArmure(Personnage personnage, int protection) {
         super(personnage);
         this.protection = protection;
     }

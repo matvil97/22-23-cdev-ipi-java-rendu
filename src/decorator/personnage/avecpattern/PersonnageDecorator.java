@@ -1,6 +1,6 @@
 package decorator.personnage.avecpattern;
 
-public class PersonnageDecorator implements Personnage {
+public abstract class PersonnageDecorator implements Personnage {
 
     protected final Personnage personnage;
 
@@ -10,11 +10,11 @@ public class PersonnageDecorator implements Personnage {
 
     @Override
     public void encaisserDegat(int degat, TypeDegat typeDegat) {
-
+        personnage.encaisserDegat(degat, typeDegat);
     }
 
     @Override
     public int getPointDeVie() {
-        return 0;
+        return personnage.getPointDeVie();
     }
 }
