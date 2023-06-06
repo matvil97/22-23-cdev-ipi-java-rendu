@@ -24,6 +24,13 @@ public class MonArrayList {
     }
 
     private void copie(String[] array, String[] array2) {
-        // TODO
+        int i = 0;
+        for (String s : array) {
+            array2[i++] = s;
+        }
+    }
+
+    public int size() {
+        return index;
     }
 }
