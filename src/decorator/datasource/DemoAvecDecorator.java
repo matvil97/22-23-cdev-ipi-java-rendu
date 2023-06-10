@@ -4,9 +4,10 @@ public class DemoAvecDecorator {
     public static void main(String[] args) {
         // exemple de données à sauvegarder encrypter et compressé
         String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
+        DataSourceDecorator encoded = new Compressor(new Encryptor(new FileDataSource("OutputDemo.txt")));
+        
 
-        FileDataSource fileDataSource = new FileDataSource("OutputDemo.txt");
-
-        // TODO
+        encoded.writeData(salaryRecords);
+        DataSource plain = new FileDataSource("OutputDemo.txt");
     }
 }

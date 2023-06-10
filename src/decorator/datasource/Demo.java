@@ -6,8 +6,8 @@ public class Demo {
         String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
 
         DataSource dataSource = new FileDataSource("OutputDemo.txt");
-        Encryptor encryptor = new Encryptor();
-        Compressor compressor = new Compressor();
+        Encryptor encryptor = new Encryptor(dataSource);
+        Compressor compressor = new Compressor(dataSource);
 
         String encoded = encryptor.encode(salaryRecords);
         String encodedAndCompressed = compressor.compress(encoded);
