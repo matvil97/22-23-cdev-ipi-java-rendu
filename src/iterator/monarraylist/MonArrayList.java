@@ -1,7 +1,9 @@
 package iterator.monarraylist;
 
-public class MonArrayList {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
+public class MonArrayList implements Iterable<String> {
     private String[] array = new String[10];
     private int index = 0;
 
@@ -32,5 +34,29 @@ public class MonArrayList {
 
     public int size() {
         return index;
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        return new MonArrayListIterator();
+    }
+
+    private class MonArrayListIterator implements Iterator<String> {
+        private int currentIndex = 0;
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < index;
+        }
+
+        @Override
+        public String next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            String element = array[currentIndex];
+            currentIndex++;
+            return element;
+        }
     }
 }
