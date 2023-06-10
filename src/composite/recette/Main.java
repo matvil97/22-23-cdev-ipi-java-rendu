@@ -42,7 +42,7 @@ public class Main {
         double prixTotalComposite = calculerPrixRecetteComposite(pizza);
         System.out.println("Le prix total de la pizza (avec utilisation du pattern Composite) est " + prixTotalComposite);
     }
-
+//modif pour commit
     // Méthode qui calcule le prix d'une recette de manière naïve (sans le pattern Composite)
     private static double calculerPrixRecetteNaif(Recette recette) {
         double prixTotal = 0;
