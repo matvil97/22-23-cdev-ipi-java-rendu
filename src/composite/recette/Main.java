@@ -35,33 +35,40 @@ public class Main {
         pizza.add(2, mozzarella);
 
         // 1. Calculer le prix d'une recette de manière naïve = sans le pattern Composite
-        double prixTotal = calculerPrixRecette(pizza);
-        System.out.println("Le prix total de la pizza est " + prixTotal);
+        double prixTotalNaif = calculerPrixRecetteNaif(pizza);
+        System.out.println("Le prix total de la pizza (sans utilisatiion du pattern composite est " + prixTotalNaif);
 
-        // 2. Calculer le prix d'une recette en utilisant le pattern
-        // TODO
+        // 2. Calculer le prix d'une recette en utilisant le pattern Composite
+        double prixTotalComposite = calculerPrixRecetteComposite(pizza);
+        System.out.println("Le prix total de la pizza (avec utilisation du pattern Composite) est " + prixTotalComposite);
     }
 
-    // Méthode qui calcule le prix d'une recette
-    // TODO a compléter !
-    private static double calculerPrixRecette(Recette recette) {
+    // Méthode qui calcule le prix d'une recette de manière naïve (sans le pattern Composite)
+    private static double calculerPrixRecetteNaif(Recette recette) {
         double prixTotal = 0;
 
-        // Prix des ingredients
+        // Prix des ingrédients
         Set<Ingredient> tousSesIngredientsDirects = recette.getIngredients().keySet();
         for (Ingredient ingredient : tousSesIngredientsDirects) {
             Double quantite = recette.getIngredients().get(ingredient);
-            // TODO
+            double prixIngredient = ingredient.getPrix() * quantite;
+            prixTotal += prixIngredient;
         }
 
-        // Prix des sous recettes
+        // Prix des sous-recettes
         Set<Recette> tousSesSousRecettesDirects = recette.getSousRecettes().keySet();
         for (Recette sousRecette : tousSesSousRecettesDirects) {
             Double quantite = recette.getSousRecettes().get(sousRecette);
-            double prixUnitaireDeLaSousRecette = calculerPrixRecette(sousRecette);
+            double prixUnitaireDeLaSousRecette = calculerPrixRecetteNaif(sousRecette);
+            double prixSousRecette = prixUnitaireDeLaSousRecette * quantite;
+            prixTotal += prixSousRecette;
         }
 
-        //...
         return prixTotal;
+    }
+
+    // Méthode qui calcule le prix d'une recette en utilisant le pattern Composite
+    private static double calculerPrixRecetteComposite(Recette recette) {
+        return recette.calculerPrix();
     }
 }

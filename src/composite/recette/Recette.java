@@ -22,4 +22,27 @@ public class Recette {
     public Map<Recette, Double> getSousRecettes() {
         return sousRecettes;
     }
+
+    public double calculerPrix() {
+        double prixTotal = 0;
+
+        // Prix des ingrédients
+        for (Map.Entry<Ingredient, Double> entry : ingredients.entrySet()) {
+            Ingredient ingredient = entry.getKey();
+            double quantite = entry.getValue();
+            double prixIngredient = ingredient.getPrix() * quantite;
+            prixTotal += prixIngredient;
+        }
+
+        // Prix des sous-recettes
+        for (Map.Entry<Recette, Double> entry : sousRecettes.entrySet()) {
+            Recette sousRecette = entry.getKey();
+            double quantite = entry.getValue();
+            double prixUnitaireDeLaSousRecette = sousRecette.calculerPrix();
+            double prixSousRecette = prixUnitaireDeLaSousRecette * quantite;
+            prixTotal += prixSousRecette;
+        }
+
+        return prixTotal;
+    }
 }
