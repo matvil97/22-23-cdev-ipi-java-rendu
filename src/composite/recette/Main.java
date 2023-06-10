@@ -36,7 +36,7 @@ public class Main {
 
         // 1. Calculer le prix d'une recette de manière naïve = sans le pattern Composite
         double prixTotalNaif = calculerPrixRecetteNaif(pizza);
-        System.out.println("Le prix total de la pizza (sans utilisatiion du pattern composite est " + prixTotalNaif);
+        System.out.println("Le prix total de la pizza (sans utilisatiion du pattern composite) est " + prixTotalNaif);
 
         // 2. Calculer le prix d'une recette en utilisant le pattern Composite
         double prixTotalComposite = calculerPrixRecetteComposite(pizza);

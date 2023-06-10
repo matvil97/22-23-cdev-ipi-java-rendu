@@ -35,7 +35,7 @@ public class MonArrayList implements Iterable<String> {
     public int size() {
         return index;
     }
-
+// Modif pour commit
     @Override
     public Iterator<String> iterator() {
         return new MonArrayListIterator();
